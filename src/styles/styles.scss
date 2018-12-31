@@ -1,0 +1,59 @@
+@import './settings';
+@import './base'; //importing partial leave off _ and extension
+
+header li {
+	display: inline-block;
+	width: 150px;
+	border: 1px solid $dark-blue;
+	margin: 10px;
+	text-align: center;
+	text-decoration: none;
+	color: $dark-blue;
+}
+
+
+.linkActive  {
+	background-color: $dark-blue;
+	color: white;
+}
+
+.ExpenseList, #ExpenseForm {
+	width: 50%;
+	padding: 20px;
+	border: 5px solid rgb(178, 176, 167);
+	margin: 15px;
+	background-color:  rgb(237, 235, 227);
+	
+}
+
+.ExpenseListTable th {
+	border: 1px solid black;
+	background-color: rgb(215, 218, 224);	
+}
+.ExpenseListTable th.sortcol {		
+	background-color: rgb(177, 178, 181);
+}
+.ExpenseListTable th:hover {
+	cursor: pointer;
+}
+
+.ExpenseListTable td  {
+	padding: 5px;
+	width: 120px;
+	border: 1px solid black;
+
+}
+
+.expense {	
+	background-color:  rgb(209, 206, 196);
+}
+
+.expense:hover {	
+	background-color: rgb(107, 127, 160);
+	color: white
+}
+
+.expense_remove:hover {
+	cursor: pointer;	
+}
+

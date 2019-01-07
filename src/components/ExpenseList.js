@@ -5,6 +5,7 @@ import Expense from './Expense';
 import ExpenseFilter from './ExpenseFilter';
 import {getVisibleExpenses} from '../redux/views';
 import {SortBy } from '../redux/filters';
+import ExpenseTotal from './ExpenseTotal';
 
 class ExpenseList extends React.Component {
 	
@@ -25,6 +26,7 @@ class ExpenseList extends React.Component {
 				<div className="ExpenseList">
 					<h1>Expense List</h1>
 					<ExpenseFilter />
+					<ExpenseTotal expenseList={this.props.expenses} />
 					<table className="ExpenseListTable">
 						<thead>			
 							<tr>

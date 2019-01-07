@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { DateRangePicker } from 'react-dates'
 import { SetText, SetAmount, SetFilter, SetBeginDate, SetEndDate } from '../redux/filters';
-
+import moment from 'moment';
 
 
 class ExpenseFilter extends React.Component {
@@ -20,10 +20,9 @@ class ExpenseFilter extends React.Component {
 
 
 	handle_DateChange = ({startDate,endDate}) => {				
-		if (startDate) {
-			const startDateAction = SetBeginDate(startDate);
-			this.props.dispatch(startDateAction);
-		}
+		
+		const startDateAction = startDate ?  SetBeginDate(startDate) : SetBeginDate(moment(new Date(2000, 1-1, 1)));
+		this.props.dispatch(startDateAction);		
 		if (endDate) {
 			const endDateAction = SetEndDate(endDate);
 			this.props.dispatch(endDateAction);

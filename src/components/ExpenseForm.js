@@ -1,7 +1,7 @@
 import React from 'react';
-import {store} from '../redux/createStore';
+import myStore from '../redux/createStore';
 import {Redirect} from 'react-router-dom';
-import { AddExpense, EditExpense, RemoveExpense } from '../redux/expenses';
+import { AddExpenseDB, EditExpenseDB, RemoveExpenseDB } from '../redux/expenses';
 import moment from 'moment';
 import { SingleDatePicker } from 'react-dates'
 import 'react-dates/initialize';
@@ -78,25 +78,22 @@ export default class ExpenseForm extends React.Component {
 	}
 	
 	handleSubmit = () => {	
-		
-		
-		//console.log(this.state);
-		//return;
+					
 		
 		if (!this.state.description || !this.state.amount) {			
 			this.setState( () => (  {error_desc: "Please fill in description/amount."} ));
 		}
 		else {
-			const {id,recorded_on,amount,description, notes} = {...this.state};
+			const {id,recorded_on,amount,description, notes} = {...this.state};			
 			if (this.props.mode==="Add") {
-				const expense = {recorded_on: recorded_on.valueOf(),amount,description, notes}
-				const AddExpenseAction = AddExpense(expense)
-				store.dispatch(AddExpenseAction);
+				const expense = {recorded_on: recorded_on.valueOf(),amount,description, notes}				
+				const AddExpenseAction = AddExpenseDB(expense)
+				myStore.dispatch(AddExpenseAction);
 			}
 			else {
 				const expense = {id,recorded_on: recorded_on.valueOf(),amount,description, notes}
-				const EdiExpenseAction = EditExpense(expense)
-				store.dispatch(EdiExpenseAction);
+				const EdiExpenseAction = EditExpenseDB(expense)
+				myStore.dispatch(EdiExpenseAction);
 			}			
 			this.setState( () => (  {submit: true} ));
 		}
@@ -104,7 +101,7 @@ export default class ExpenseForm extends React.Component {
 
 	handleRemove = () => {
 		console.log("remove");
-		store.dispatch(RemoveExpense(this.state.id));
+		myStore.dispatch(RemoveExpenseDB(this.state.id));
 		this.setState( () => (  {submit: true} ));
 	}
 

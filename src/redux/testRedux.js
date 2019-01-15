@@ -1,4 +1,4 @@
-import {store} from './createStore';
+import myStore from './createStore';
 import {AddExpense} from './expenses';
 import {SortBy,SetBeginDate,SetText} from './filters';
 import {getVisibleExpenses} from './views'

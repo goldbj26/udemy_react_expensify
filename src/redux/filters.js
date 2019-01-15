@@ -1,4 +1,4 @@
-import {store} from './createStore'; // only needed for swapping sort by asc / desc
+import myStore from './createStore'; // only needed for swapping sort by asc / desc
 import moment from 'moment';
 
 /* ACTIONS - FILTER */
@@ -11,8 +11,8 @@ export const SetFilter = (f = filterReducerDefaultState) => {
 
 export const SortBy = (sortText = '') => {	
 	
-	const sort = store.getState().filter.sort;
-	let sort_asc = store.getState().filter.sort_asc;
+	const sort = myStore.getState().filter.sort;
+	let sort_asc = myStore.getState().filter.sort_asc;
 
 	if (sort === sortText)
 		sort_asc = !sort_asc;

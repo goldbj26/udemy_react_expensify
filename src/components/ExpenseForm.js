@@ -84,14 +84,16 @@ export default class ExpenseForm extends React.Component {
 			this.setState( () => (  {error_desc: "Please fill in description/amount."} ));
 		}
 		else {
-			const {id,recorded_on,amount,description, notes} = {...this.state};			
+			const {id,recorded_on,amount,description, notes} = {...this.state};
 			if (this.props.mode==="Add") {
-				const expense = {recorded_on: recorded_on.valueOf(),amount,description, notes}				
+				const namount = Number(amount);
+				const expense = {recorded_on: recorded_on.valueOf(),amount:namount,description, notes}				
 				const AddExpenseAction = AddExpenseDB(expense)
 				myStore.dispatch(AddExpenseAction);
 			}
 			else {
-				const expense = {id,recorded_on: recorded_on.valueOf(),amount,description, notes}
+				const namount = Number(amount);
+				const expense = {id,recorded_on: recorded_on.valueOf(),amount:namount,description, notes}				
 				const EdiExpenseAction = EditExpenseDB(expense)
 				myStore.dispatch(EdiExpenseAction);
 			}			

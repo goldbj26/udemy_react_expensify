@@ -31,6 +31,9 @@ export const AddExpenseDB = (e = {}) => {
 			.then( (ref) => {
 				dispatch(AddExpense({id: ref.key,...e}));
 			})
+			.catch( (err) =>  {
+				console.log(err);
+			})
 	};			
 };
 
